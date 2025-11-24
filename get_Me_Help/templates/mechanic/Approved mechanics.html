@@ -1,0 +1,42 @@
+{% extends 'mechanic/Mechanic_Home_index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <style>
+        .table-hover th{
+            background-color: #8fd19e;
+            text-transform: uppercase;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="" height="" border="1" class="table table-hover">
+    <tr>
+      <th scope="col">S.No</th>
+      <th scope="col">Date</th>
+      <th scope="col">User Details</th>
+      <th scope="col">Track&nbsp;</th>
+      <th scope="col">Chat&nbsp;</th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td> {{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.date }}</td>
+      <td>&nbsp;{{ i.USER.email }} <br> {{ i.USER.contact_no }}</td>
+      <td><p><a href="http://www.google.com/maps/?q={{ i.USER.latitude }},{{ i.USER.longitude }}">Track </a></p>
+     </td>
+        <td><p><a href="/chatt_m/{{ i.USER.id }}"  class="btn btn-success"style="width: 80px">chat</a></p></td>
+
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

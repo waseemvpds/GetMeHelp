@@ -1,0 +1,44 @@
+{% extends 'Fuel provider/Fuel_Provider_home_index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/Fuel_Price_Edit_post/{{ data.id }}" class="table table-light">
+  <table width="" height="" border="1">
+    <tr>
+      <th width="309" scope="row">Fuel Price</th>
+      <td width="284"><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" value="{{ data.Fuel_Price }}" class="form-control" required pattern="[0-9]+([\.][0-9]{0,2})?"/></td>
+    </tr>
+    <tr>
+      <th scope="row">Density</th>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2" value="{{ data.Fuel_Density}}" class="form-control"required pattern="[0-9]+([\.][0-9]{0,2})?"/></td>
+    </tr>
+   <tr>
+      <th scope="row">Fuel Type</th>
+      <td><label for="textfield3"></label>
+      <p>
+          <label>
+            <input type="radio" name="CheckboxGroup1" value="Petrol" id="CheckboxGroup1_0"   {% if data.Fuel_type == 'Petrol' %} checked {% endif %}/>
+            Petrol</label>
+          <br />
+          <label>
+            <input type="radio" name="CheckboxGroup1" value="Diesel" id="CheckboxGroup1_1"   {% if data.Fuel_type == 'Diesel' %} checked {% endif %}/>
+            Diesel</label>
+          <br />
+      </p></td>
+    <tr>
+    <tr>
+      <th colspan="2" scope="row"><div align="center"><input type="submit" name="button" id="button" value="Edit" class="btn btn-success"/></div></th>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'Fuel provider/Fuel_Provider_home_index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <style>
+        .table-hover th{
+            background-color: #8fd19e;
+            text-transform: uppercase;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+<table width="" height="" border="1" class="table table-hover">
+  <tr>
+    <th height="" scope="col">No.</th>
+    <th scope="col">Fuel Price</th>
+    <th scope="col">Fuel Density</th>
+    <th scope="col">Fuel Type</th>
+    <th scope="col">&nbsp;</th>
+  </tr>
+   {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ forloop.counter }}</td>
+    <td>&nbsp;{{ i.Fuel_Price }}</td>
+    <td>&nbsp;{{ i.Fuel_Density }}</td>
+    <td> {{ i.Fuel_type }}</td>
+    <td><p><a href="/Fuel_Price_Edit/{{ i.id }}#aaa"class="btn btn-success" style="width: 80px">Edit</a></p>
+    <p><a href="/Delete_Fuel_Price/{{ i.id }}"class="btn btn-danger" style="width: 80px">Delete</a></p></td>
+  </tr>
+    {% endfor %}
+</table>
+</form>
+</body>
+</html>
+{% endblock %}

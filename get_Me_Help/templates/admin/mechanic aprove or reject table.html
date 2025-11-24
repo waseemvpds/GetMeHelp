@@ -1,0 +1,49 @@
+{% extends 'admin/admin_index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <style>
+        .table-hover th{
+            background-color: #8fd19e;
+            text-transform: uppercase;
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+<table width="" height="" border="1" class="table table-hover">
+  <tr>
+    <th width="141" scope="row">s.no</th>
+    <th width="171">name</th>
+    <th width="182">email</th>
+    <th width="124">contact</th>
+    <th width="133">Category</th>
+    <th width="133">Location</th>
+    <th width="133">Certificate</th>
+    <th width="135">Action</th>
+  </tr>
+     {% for i in data %}
+  <tr>
+    <td scope="row">{{ forloop.counter }}</td>
+    <td>{{ i.name }}</td>
+    <td>{{ i.email }}</td>
+    <td>{{ i.contact_no }}</td>
+    <td>{{ i.category }}</td>
+      <td><a href="https://www.google.com/maps/?q={{ i.latitude }},{{ i.longitude }}">Track</a></td>
+      <td><a href="{{ i.certificate }}">View</a></td>
+  <td colspan="2">
+          <a href="/approve_mechanic/{{ i.LOGIN.id }}" class="btn btn-success" style="width: 80px">approve</a><br><br>
+          <a href="/reject_mechanic/{{ i.LOGIN.id }}" class="btn btn-danger" style="width: 80px">Reject</a>
+
+      </td>
+  </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'mechanic/Mechanic_Home_index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/Mechanic_Register_Table_post">
+  <table width="" height="" border="1">
+    <tr>
+      <th scope="row">Name</th>
+      <td><label for="Name"></label>
+      <input type="text" name="Name" id="Name" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+      <td><label for="Email"></label>
+      <input type="text" name="Email" id="Email" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Contact</th>
+      <td><label for="Contact"></label>
+      <input type="text" name="Contact" id="Contact" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Category</th>
+      <td><label for="select"></label>
+        <select name="Category" id="Category">
+            <option>Puncture</option>
+            <option>A/c</option>
+      </select></td>
+    </tr>
+    <tr>
+      <th scope="row">Password</th>
+      <td><label for="Password"></label>
+      <input type="text" name="Password" id="Password" /></td>
+    </tr>
+    <tr>
+      <th scope="row">Confirm Password</th>
+      <td><label for="Confirm Password"></label>
+      <input type="text" name="Confirm Password" id="Confirm Password" /></td>
+    </tr>
+    <tr>
+      <th colspan="2" scope="row"><input type="submit" name="REGISTER" id="REGISTER" value="REGISTER" /></th>
+    </tr>
+  </table>
+
+</form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'admin/admin_index.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+     <style>
+        .table-hover th{
+            background-color: #8fd19e;
+            text-transform: uppercase;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="" height="" border="1" class="table table-hover">
+    <tr>
+      <th scope="row">S.no</th>
+      <th>Complaint</th>
+      <th>Date</th>
+      <th>Reply,Reply date</th>
+{#      <td></td>#}
+      <th>User info</th>
+    </tr>
+      {% for i in data %}
+      <tr>
+      <td scope="row">{{ forloop.counter }}</td>
+      <td>{{ i.complaint }}</td>
+      <td>{{ i.date }}</td>
+          {% if i.reply == 'pending' %}
+
+      <td colspan="2"><a href="/send_reply/{{ i.id }}#aaa" class="btn btn-success">Send Reply</a></td>
+          {% else %}
+                <td>&nbsp;{{ i.reply }},{{ i.reply_date }}</td>
+          {% endif %}
+      <td>{{ i.USER.name }}</td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}
