@@ -318,7 +318,7 @@ def Mechanic_Register_Table_post(request):
 
     fs=FileSystemStorage()
     d=datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-    fs.save(r"C:\Users\zaifv\PycharmProjects\get_Me_Help\MYAPP\static\certificates\\"+d+".pdf",Certificate)
+    fs.save(r"D:\zeem\prjct\prjct\get_Me_Help-8\get_Me_Help\MYAPP\static\certificates"+d+".pdf",Certificate)
     path="/static/certificates/"+d+".pdf"
     CPassword = request.POST['Confirm Password']
     if Password == CPassword:
