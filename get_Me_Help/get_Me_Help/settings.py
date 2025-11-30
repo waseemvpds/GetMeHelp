@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import dj_database_url
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -77,14 +79,10 @@ WSGI_APPLICATION = 'get_Me_Help.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'mysql.connector.django',
-        'NAME': os.environ.get('getmehelp_db_himanswer'),
-        'USER': os.environ.get('getmehelp_db_himanswer'),
-        'PASSWORD': os.environ.get('w85c5f580580b29a0ce98711ed4aa8519bfc27a34'),
-        'HOST': os.environ.get('zl76z2.h.filess.io'),
-        'PORT': os.environ.get('61001'),
-    }
+    'default': dj_database_url.parse(
+        os.environ.get('DATABASE_URL'),
+        engine='mysql.connector.django',
+    )
 }
 
 

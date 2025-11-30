@@ -34,6 +34,7 @@ defusedxml==0.7.1
 dill==0.4.0
 distributed==2025.10.0
 Django==5.2.8
+dj-database-url
 docstring-to-markdown==0.17
 et_xmlfile==2.0.0
 executing==2.2.1
