@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'get_Me_Help.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'GetMeHelp',
-        'USER': 'root',
-        'PASSWORD': 'waseem@9946',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'NAME': os.environ.get('getmehelp_db_himanswer'),
+        'USER': os.environ.get('getmehelp_db_himanswer'),
+        'PASSWORD': os.environ.get('w85c5f580580b29a0ce98711ed4aa8519bfc27a34'),
+        'HOST': os.environ.get('zl76z2.h.filess.io'),
+        'PORT': os.environ.get('61001'),
     }
 }
 
