@@ -1,6 +1,7 @@
 import datetime
 
 from django.core.files.storage import FileSystemStorage
+from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 from django.db.models.expressions import RawSQL
 from django.http import HttpResponse, JsonResponse
@@ -382,7 +383,7 @@ def Mechanic_View_User_Request_Approved(request):
 
 ##User Android
 
-
+@csrf_exempt
 def user_login(request):
     """
     Mobile app login API
@@ -478,7 +479,7 @@ def user_login(request):
 #         else:
 #             return JsonResponse({'status': 'notok'})
 
-
+@csrf_exempt
 def user_register(request):
     Name = request.POST['name']
     Email = request.POST['email']
