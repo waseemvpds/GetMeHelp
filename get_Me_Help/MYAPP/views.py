@@ -383,18 +383,55 @@ def Mechanic_View_User_Request_Approved(request):
 ##User Android
 
 
-def user_login (request):
-    Name=request.POST['Name']
-    password=request.POST['password']
-    data=login.objects.filter(username=Name , password=password)
-    if data.exists():
-        data=data[0]
-        lid=data.id
-        type=data.usertype
-        return JsonResponse({'status':'ok',"lid":lid,"type":type})
-    else:
-
-        return JsonResponse({'status':None})
+def user_login(request):
+    """
+    Mobile app login API
+    POST parameters: Name (email/username), password
+    Returns: JSON response with status, lid, type
+    """
+    try:
+        # Get credentials from Android app
+        username = request.POST.get('Name', '').strip()
+        password = request.POST.get('password', '').strip()
+        
+        # Validate
+        if not username or not password:
+            return JsonResponse({
+                'status': 'error',
+                'message': 'Please enter username and password'
+            }, status=400)
+        
+        # Query database
+        user_data = login.objects.filter(username=username, password=password)
+        
+        if user_data.exists():
+            user_obj = user_data[0]
+            
+            # Check if user type is 'user' (registered users only)
+            if user_obj.usertype != 'user':
+                return JsonResponse({
+                    'status': 'error',
+                    'message': f'Access denied. User type: {user_obj.usertype}'
+                })
+            
+            return JsonResponse({
+                'status': 'ok',
+                'lid': user_obj.id,
+                'type': user_obj.usertype,
+                'message': 'Login successful'
+            })
+        else:
+            return JsonResponse({
+                'status': 'error',
+                'message': 'Invalid email or password'
+            }, status=401)
+    
+    except Exception as e:
+        print(f"Login error: {str(e)}")  # For debugging
+        return JsonResponse({
+            'status': 'error',
+            'message': f'Server error: {str(e)}'
+        }, status=500)
 
 
 # def user_register (request):
